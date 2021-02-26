@@ -21,3 +21,44 @@ $ pipenv shell
 $ python
 >>> from app import db
 >>> db.create_all()
+```
+
+## Routes
+### Create a single todo:
+```json
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:5000/api/add-todo",
+  "body": {
+    "title": "Learn to program",
+    "done": false
+  },
+  "Content-Type": "application/json"
+}
+```
+### Get all todos:
+```json
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:5000/api/get-all-todos",
+}
+```
+### Edit a single todo:
+```json
+{
+  "method": "PATCH",
+  "url": "http://127.0.0.1:5000/api/edit-done/TODO_ID",
+  "body": {
+    "done": true
+  },
+  "Content-Type": "application/json"
+}
+```
+### Delete a single todo:
+```json
+{
+  "method": "DELETE",
+  "url": "http://127.0.0.1:5000/api/delete-todo/TODO_ID",
+
+}
+```
