@@ -37,11 +37,10 @@ def hello():
 def add_todo():
     title = request.json['title']
     done = request.json['done']
-    new_Todo = Todo(title, done)
-    db.session.add(new_Todo)
+    new_todo = Todo(title, done)
+    db.session.add(new_todo)
     db.session.commit()
-    todo = Todo.query.get(new_Todo.id)
-    return todo_schema.jsonify(todo)
+    return todo_schema.jsonify(new_todo)
 
 # Get all todos
 @app.route('/api/get-all-todos', methods=['GET'])
