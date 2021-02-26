@@ -14,7 +14,6 @@ $ pipenv shell
 $ python app.py
 ```
 
-
 ## How to create the database
 ```
 $ pipenv shell
@@ -36,6 +35,7 @@ $ python
   "Content-Type": "application/json"
 }
 ```
+
 ### Get all todos:
 ```json
 {
@@ -43,6 +43,7 @@ $ python
   "url": "http://127.0.0.1:5000/api/get-all-todos",
 }
 ```
+
 ### Edit a single todo:
 ```json
 {
@@ -54,11 +55,11 @@ $ python
   "Content-Type": "application/json"
 }
 ```
+
 ### Delete a single todo:
 ```json
 {
   "method": "DELETE",
   "url": "http://127.0.0.1:5000/api/delete-todo/TODO_ID",
-
 }
 ```
