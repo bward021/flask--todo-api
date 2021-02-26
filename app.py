@@ -64,7 +64,7 @@ def delete_todo(todo_id):
     todo = Todo.query.get(todo_id)
     db.session.delete(todo)
     db.session.commit()
-    return todo_schema.jsonify(todo)
+    return f"{todo_schema.jsonify(todo)} was deleted!"
 
 if __name__ == "__main__":
     app.debug = True
