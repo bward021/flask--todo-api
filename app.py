@@ -43,11 +43,29 @@ def add_todo():
     todo = Todo.query.get(new_Todo.id)
     return todo_schema.jsonify(todo)
 
-# Get a single todo
+# Get all todos
+@app.route('/api/get-all-todos', methods=['GET'])
+def get_all_todos():
+    all_todos = Todo.query.all()
+    return jsonify(todos_schema.dump(all_todos))
 
 # Edit todo's done field
+@app.route('/api/edit-done/<todo_id>', methods=['PATCH'])
+def edit_done(todo_id):
+    new_done = request.json['done']
+    todo = Todo.query.get(todo_id)
+    todo.done = new_done
+    db.session.commit()
+    return todo_schema.jsonify(todo)
+    
 
 # Delete the todo
+@app.route('/api/delete-todo/<todo_id>', methods=['DELETE'])
+def delete_todo(todo_id):
+    todo = Todo.query.get(todo_id)
+    db.session.delete(todo)
+    db.session.commit()
+    return todo_schema.jsonify(todo)
 
 if __name__ == "__main__":
     app.debug = True
